@@ -1,1 +1,529 @@
+# API Testing Fundamentals -- Learning Roadmap
+
+> **Purpose:** Build a strong foundation in APIs before learning Postman
+> and Java-based API automation.
+>
+> **Learning path:** API Basics → HTTP Fundamentals → REST/SOAP →
+> JSON/XML → Authentication → API Testing → Postman → REST Assured.
+
+------------------------------------------------------------------------
+
+## Table of Contents
+
+1.  [Introduction to APIs](#1-introduction-to-apis)
+2.  [API Architecture and
+    Communication](#2-api-architecture-and-communication)
+3.  [Types of APIs](#3-types-of-apis)
+4.  [HTTP Fundamentals](#4-http-fundamentals)
+5.  [HTTP Status Codes](#5-http-status-codes)
+6.  [JSON and XML](#6-json-and-xml)
+7.  [Authentication and
+    Authorization](#7-authentication-and-authorization)
+8.  [API Testing Fundamentals](#8-api-testing-fundamentals)
+9.  [API Testing Tools](#9-api-testing-tools)
+10. [E-commerce API Example](#10-e-commerce-api-example)
+11. [Recommended Learning Sequence](#11-recommended-learning-sequence)
+12. [Learning Checklist](#12-learning-checklist)
+
+------------------------------------------------------------------------
+
+## 1. Introduction to APIs
+
+Start by understanding what an API is and why applications use APIs to
+communicate.
+
+### Topics to learn
+
+-   What is an API?
+-   Why do we need APIs?
+-   What is the purpose of an API?
+-   How does an API work?
+-   Real-world examples of APIs.
+-   Client and Server concepts.
+-   How two different applications communicate.
+-   API vs. Web Application.
+-   API vs. Web Services.
+-   Types of APIs.
+
+### Learning outcome
+
+You should be able to explain an API in simple words and describe how
+one application requests data or a service from another application.
+
+------------------------------------------------------------------------
+
+## 2. API Architecture and Communication
+
+Understand how requests and responses travel between applications.
+
+### Topics to learn
+
+-   Client--Server Architecture.
+-   Request and Response.
+-   API Communication Flow.
+-   HTTP Protocol.
+-   HTTPS Protocol.
+-   REST Architecture.
+-   SOAP Architecture.
+-   REST API vs. SOAP API.
+-   Synchronous vs. Asynchronous communication.
+-   API Gateway -- basic introduction.
+
+### Basic request-response flow
+
+1.  A client (for example, a browser or mobile app) sends a request.
+2.  The request reaches the server through an API endpoint.
+3.  The server processes the request and may interact with a database or
+    another service.
+4.  The server sends a response to the client.
+5.  The client displays or uses the returned information.
+
+------------------------------------------------------------------------
+
+## 3. Types of APIs
+
+Understand the common API styles and access categories.
+
+### Common API styles
+
+  -----------------------------------------------------------------------
+  API type                            Meaning
+  ----------------------------------- -----------------------------------
+  REST API                            Uses HTTP methods and commonly
+                                      exchanges JSON data.
+
+  SOAP API                            Uses structured XML-based
+                                      messaging.
+
+  GraphQL API                         Lets clients request the specific
+                                      data fields they need.
+
+  RPC API                             Allows a client to call a procedure
+                                      or function on another system.
+
+  WebSocket API                       Supports two-way, ongoing
+                                      communication between client and
+                                      server.
+  -----------------------------------------------------------------------
+
+### API access categories
+
+-   **Public API:** Available for external developers to use, subject to
+    its rules.
+-   **Private API:** Intended for use within an organization or system.
+-   **Partner API:** Shared with approved business partners.
+-   **Composite API:** Combines multiple operations or data sources in
+    one interaction.
+
+------------------------------------------------------------------------
+
+## 4. HTTP Fundamentals
+
+HTTP knowledge is essential for API testing because many APIs
+communicate through HTTP.
+
+### Topics to learn
+
+-   What is HTTP?
+-   What is HTTPS?
+-   HTTP request methods.
+-   HTTP response.
+-   HTTP headers.
+-   URL structure.
+-   URI vs. URL.
+-   Query parameters.
+-   Path parameters.
+-   Request body.
+-   Response body.
+
+### HTTP methods
+
+  Method   Purpose                               E-commerce example
+  -------- ------------------------------------- -----------------------
+  GET      Retrieve data                         Get product details
+  POST     Create data or trigger an operation   Create a new user
+  PUT      Replace an existing resource          Replace user details
+  PATCH    Partially update a resource           Update a user's email
+  DELETE   Delete a resource                     Delete a product
+
+### Important request components
+
+-   **Endpoint / URL:** The address to which the request is sent.
+-   **Path parameter:** A value included in the URL path, such as
+    `/products/101`.
+-   **Query parameter:** An optional value after `?`, such as
+    `/products?category=books`.
+-   **Header:** Metadata sent with the request, such as content type or
+    authorization.
+-   **Request body:** Data sent to the server, commonly with POST, PUT,
+    or PATCH.
+-   **Response body:** Data returned by the server.
+
+------------------------------------------------------------------------
+
+## 5. HTTP Status Codes
+
+Status codes indicate the result of an HTTP request.
+
+  -----------------------------------------------------------------------
+  Code                                Meaning
+  ----------------------------------- -----------------------------------
+  200                                 OK -- request succeeded
+
+  201                                 Created -- resource created
+                                      successfully
+
+  202                                 Accepted -- request accepted for
+                                      processing
+
+  204                                 No Content -- request succeeded
+                                      with no response body
+
+  400                                 Bad Request -- request is invalid
+
+  401                                 Unauthorized -- valid
+                                      authentication is required
+
+  403                                 Forbidden -- the server refuses
+                                      access
+
+  404                                 Not Found -- requested resource was
+                                      not found
+
+  405                                 Method Not Allowed -- HTTP method
+                                      is not supported for the resource
+
+  409                                 Conflict -- request conflicts with
+                                      the current resource state
+
+  415                                 Unsupported Media Type -- request
+                                      format is not supported
+
+  422                                 Unprocessable Content -- request
+                                      content cannot be processed
+
+  500                                 Internal Server Error -- unexpected
+                                      server-side error
+
+  502                                 Bad Gateway -- invalid response
+                                      from an upstream server
+
+  503                                 Service Unavailable -- server is
+                                      temporarily unable to handle the
+                                      request
+  -----------------------------------------------------------------------
+
+### Comparisons to understand
+
+-   200 vs. 201
+-   400 vs. 401
+-   401 vs. 403
+-   404 vs. 500
+-   502 vs. 503
+
+------------------------------------------------------------------------
+
+## 6. JSON and XML
+
+APIs use data formats to exchange information. JSON is especially common
+in REST APIs.
+
+### JSON topics
+
+-   What is JSON?
+-   JSON objects.
+-   JSON arrays.
+-   Key-value pairs.
+-   Nested JSON.
+-   JSON data types.
+-   JSON validation.
+
+### Example JSON
+
+``` json
+{
+  "id": 101,
+  "name": "Vivek",
+  "email": "vivek@example.com",
+  "active": true,
+  "skills": ["Java", "SQL", "API Testing"]
+}
+```
+
+### XML topics
+
+-   What is XML?
+-   XML elements and attributes.
+-   XML structure.
+-   JSON vs. XML.
+
+### Learning outcome
+
+You should be able to read a JSON response, identify objects and arrays,
+understand nested data, and validate expected values.
+
+------------------------------------------------------------------------
+
+## 7. Authentication and Authorization
+
+These concepts help protect APIs and control who can access resources.
+
+### Topics to learn
+
+1.  What is Authentication?
+2.  What is Authorization?
+3.  Basic Authentication.
+4.  Bearer Token Authentication.
+5.  API Keys.
+6.  JWT (JSON Web Token).
+7.  OAuth 2.0 -- basic introduction.
+8.  Access Token.
+9.  Refresh Token.
+10. Role-Based Access Control (RBAC).
+
+### Important distinction
+
+-   **Authentication:** Verifies who the user or client is.
+-   **Authorization:** Determines what an authenticated user or client
+    is allowed to do.
+
+------------------------------------------------------------------------
+
+## 8. API Testing Fundamentals
+
+Once you understand API basics, learn how to test APIs.
+
+### Topics to learn
+
+-   What is API Testing?
+-   Why is API Testing required?
+-   How API Testing works.
+-   API Testing Life Cycle.
+-   Positive Testing.
+-   Negative Testing.
+-   Functional Testing.
+-   Integration Testing.
+-   Regression Testing.
+-   Boundary Value Testing.
+-   Data Validation.
+-   Error Handling.
+-   API Performance Testing -- introduction.
+-   API Security Testing -- introduction.
+
+### What should a tester validate?
+
+-   Correct HTTP status code.
+-   Correct response body and data.
+-   Correct response headers.
+-   Data types and required fields.
+-   Error messages for invalid requests.
+-   Authentication and authorization behavior.
+-   Response time against agreed expectations.
+-   Whether the API behaves correctly for valid and invalid inputs.
+
+------------------------------------------------------------------------
+
+## 9. API Testing Tools
+
+Learn the tools in a practical order.
+
+### 1. Postman -- learn first
+
+Use Postman to send API requests and inspect responses.
+
+Topics:
+
+-   Send GET, POST, PUT, PATCH, and DELETE requests.
+-   Work with headers and parameters.
+-   Send JSON request bodies.
+-   Configure authorization.
+-   Validate status codes and response bodies.
+-   Write basic JavaScript test scripts.
+-   Use environments and variables.
+-   Organize requests into collections.
+
+### 2. Swagger / OpenAPI
+
+Use Swagger UI and OpenAPI documentation to understand and explore APIs.
+
+Topics:
+
+-   Understand API documentation.
+-   Explore endpoints and schemas.
+-   Review request and response models.
+-   Execute API requests using Swagger UI.
+
+### 3. REST Assured
+
+Use REST Assured to automate API testing with Java.
+
+Topics:
+
+-   Send HTTP requests using Java.
+-   Validate status codes and response data.
+-   Work with JSON responses.
+-   Handle authentication.
+-   Integrate with TestNG or JUnit.
+-   Organize tests into a maintainable framework.
+
+### 4. JMeter
+
+Use JMeter for an introduction to API performance testing.
+
+Topics:
+
+-   Understand performance testing.
+-   Load testing.
+-   Stress testing.
+-   Review response times and throughput.
+
+------------------------------------------------------------------------
+
+## 10. E-commerce API Example
+
+Imagine you are testing an e-commerce application. It provides APIs for
+product operations and login.
+
+  Functionality             HTTP method   Example endpoint
+  ------------------------- ------------- ---------------------
+  View all products         GET           `/api/products`
+  View product details      GET           `/api/products/101`
+  Add a product             POST          `/api/products`
+  Replace product details   PUT           `/api/products/101`
+  Delete a product          DELETE        `/api/products/101`
+  Login                     POST          `/api/auth/login`
+
+> These are illustrative endpoints. Actual endpoints depend on the
+> application's API design.
+
+### Example: Test the product details API
+
+Request:
+
+``` http
+GET /api/products/101
+```
+
+Possible checks:
+
+-   Does the API return the expected success status?
+-   Is the product ID correct?
+-   Is the product name correct?
+-   Is the price correct?
+-   Are required response fields present?
+-   Are the response data types correct?
+-   Is the response time within the expected limit?
+-   What happens if the requested product does not exist?
+-   What happens if the request has invalid authentication, where
+    authentication is required?
+
+This is the basic approach to API testing: send a request, inspect the
+response, and compare the actual result with the expected result.
+
+------------------------------------------------------------------------
+
+## 11. Recommended Learning Sequence
+
+Follow this order instead of trying to learn every topic at once.
+
+  Phase   Topics
+  ------- -----------------------------------------------------
+  1       API Introduction and Fundamentals
+  2       Client--Server Architecture and API Communication
+  3       REST API and SOAP API
+  4       HTTP Methods, Headers, Parameters, and Status Codes
+  5       JSON and XML
+  6       Authentication and Authorization
+  7       API Testing Fundamentals
+  8       Postman Practical Testing
+  9       Swagger / OpenAPI
+  10      REST Assured with Java
+
+### Suggested priority
+
+For a Manual Testing → Automation Testing learning path, give extra
+attention to:
+
+1.  API Fundamentals.
+2.  HTTP Methods and Status Codes.
+3.  REST API Architecture.
+4.  JSON and Authentication.
+5.  Postman Practical Testing.
+6.  REST Assured with Java.
+
+Do not rush into Postman before understanding how a client sends a
+request and receives a response.
+
+------------------------------------------------------------------------
+
+## 12. Learning Checklist
+
+Use this checklist to track your progress.
+
+### API basics
+
+-   [ ] What is an API?
+-   [ ] Why do applications use APIs?
+-   [ ] Client and server.
+-   [ ] Request and response.
+-   [ ] API communication flow.
+-   [ ] API vs. Web Services.
+
+### API architecture and types
+
+-   [ ] HTTP and HTTPS.
+-   [ ] REST architecture.
+-   [ ] SOAP architecture.
+-   [ ] REST vs. SOAP.
+-   [ ] GraphQL, RPC, and WebSocket basics.
+-   [ ] Public, Private, Partner, and Composite APIs.
+
+### HTTP fundamentals
+
+-   [ ] URL and URI.
+-   [ ] HTTP methods.
+-   [ ] Headers.
+-   [ ] Path parameters.
+-   [ ] Query parameters.
+-   [ ] Request body.
+-   [ ] Response body.
+-   [ ] HTTP status codes.
+
+### Data formats and security
+
+-   [ ] JSON objects and arrays.
+-   [ ] Nested JSON.
+-   [ ] XML basics.
+-   [ ] Authentication vs. Authorization.
+-   [ ] API keys and Bearer tokens.
+-   [ ] JWT basics.
+-   [ ] OAuth 2.0 basics.
+
+### Testing and tools
+
+-   [ ] API testing fundamentals.
+-   [ ] Positive and negative testing.
+-   [ ] Functional and integration testing.
+-   [ ] Data validation and error handling.
+-   [ ] Postman basics and practical requests.
+-   [ ] Swagger / OpenAPI.
+-   [ ] REST Assured with Java.
+-   [ ] JMeter basics.
+
+------------------------------------------------------------------------
+
+## Final Learning Advice
+
+Build your understanding step by step:
+
+1.  First understand **what an API is and why it is needed**.
+2.  Then understand **how requests and responses work**.
+3.  Learn **HTTP methods, headers, parameters, and status codes**.
+4.  Understand **JSON and authentication**.
+5.  Start practical API testing with **Postman**.
+6.  After becoming comfortable with manual API testing, move to **REST
+    Assured with Java**.
+
+**Goal:** Be able to explain API concepts, test APIs manually using
+Postman, and later automate those API tests using Java.
 
